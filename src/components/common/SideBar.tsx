@@ -52,7 +52,7 @@ const SideBar: FC<SideBarProps> = (
       <Divider />
       <List>
         {menuItems.map((item, index) => (
-          <NavLink to={item.path} style={({ isActive }) => {
+          <NavLink key={item.text} to={item.path} style={({ isActive }) => {
             // インライン要素はオブジェクトで返す必要がある
             return {
               ...baseLinkStyle,
