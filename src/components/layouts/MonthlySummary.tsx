@@ -10,7 +10,7 @@ function MonthlySummary() {
 
         {/* 収入 */}
         <Grid size={4} display={"flex"} flexDirection={"column"}>
-          <Card sx={{ bgcolor: 'blue', color: 'white' }}>
+          <Card sx={{ bgcolor: (theme) => theme.palette.incomColor.main, color: 'white' }}>
             <CardContent sx={{ padding: { xs: 1, sm: 2 } }}>
               <Stack direction={"column"} alignItems={"center"} >
                 <ArrowDownwardIcon sx={{ fontSize: '2rem' }} />
@@ -35,7 +35,7 @@ function MonthlySummary() {
 
         {/* 支出 */}
         <Grid size={4} display={"flex"} flexDirection={"column"}>
-          <Card sx={{ bgcolor: 'red', color: 'white' }}>
+          <Card sx={{ bgcolor: (theme) => theme.palette.expenceColor.main, color: 'white' }}>
             <CardContent sx={{ padding: { xs: 1, sm: 2 } }}>
               <Stack direction={"column"} alignItems={"center"} >
                 <ArrowUpwardIcon sx={{ fontSize: '2rem' }} />
@@ -59,7 +59,7 @@ function MonthlySummary() {
 
         {/* 差引 */}
         <Grid size={4} display={"flex"} flexDirection={"column"}>
-          <Card sx={{ bgcolor: 'yellowgreen', color: 'white' }}>
+          <Card sx={{ bgcolor: (theme) => theme.palette.balanceColor.main, color: 'white' }}>
             <CardContent sx={{ padding: { xs: 1, sm: 2 } }}>
               <Stack direction={"column"} alignItems={"center"}>
                 <AccountBalanceWalletIcon sx={{ fontSize: '2rem' }} />
