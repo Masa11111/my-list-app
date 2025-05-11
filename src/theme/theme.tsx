@@ -1,5 +1,5 @@
 import { PaletteColor, PaletteColorOptions, createTheme } from "@mui/material";
-import { blue } from "@mui/material/colors";
+import { blue, pink } from "@mui/material/colors";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -33,16 +33,16 @@ export const theme = createTheme({
 
     // 支出の色を定義
     expenceColor: {
-      main: blue[500],
-      light: blue[100],
-      dark: blue[700],
+      main: pink[500],
+      light: pink[100],
+      dark: pink[700],
     },
 
     // 残高の色を定義
     balanceColor: {
-      main: blue[500],
-      light: blue[100],
-      dark: blue[700],
+      main: '#00897b',
+      light: '#33a095',
+      dark: '#005f56',
     },
   }
 })
