@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import NoMatchPath from './pages/NoMatchPath';
 import Report from './pages/Report';
 import { theme } from './theme/theme';
+import { FireStoreError } from './types/fireStoreError';
 import { Transactions } from './types/typeTransactions';
 
 function App() {
@@ -28,17 +29,31 @@ function App() {
             ...doc.data(),
           } as Transactions // 型アサーション
         })
-        console.log(transactionsData)
         setTransactions(transactionsData)
       }
       catch (error)
       {
         // エラー処理
-        console.log(error)
+        if (isFireSoreError(error))
+        {
+          console.log(error)
+          console.log(error.message)
+          console.log(error.code)
+        } else
+        {
+          console.log(error)
+        }
       }
     }
     fetcheTransactions();
   }, [])
+
+  // FireStoreのエラーか判定する
+  function isFireSoreError(error: unknown): error is FireStoreError {
+    return typeof error === "object"
+      && error !== null
+      && "code" in error
+  }
 
   return (
     <>
