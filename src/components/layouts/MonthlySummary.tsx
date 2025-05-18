@@ -2,8 +2,13 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { Card, CardContent, Grid, Stack, Typography } from "@mui/material";
+import { Transactions } from '../../types/typeTransactions';
 
-function MonthlySummary() {
+interface MonthlySummaryProps {
+  monthlyTransactions: Transactions[]
+}
+
+function MonthlySummary({ monthlyTransactions }: MonthlySummaryProps) {
   return (
     <>
       <Grid container spacing={{ xs: 1, sm: 2, md: 3 }} mb={2}>

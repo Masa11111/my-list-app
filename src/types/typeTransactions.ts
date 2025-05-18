@@ -4,9 +4,9 @@ export type ExpenceCategory = "食費" | "家賃" | "光熱費" | "日用品" | 
 
 export interface Transactions {
   id: string,
-  date: string,
   amount: number,
-  content: string,
-  type: TransactionType,
   category: IncomCategory | ExpenceCategory
+  content: string,
+  date: string,
+  type: TransactionType,
 }

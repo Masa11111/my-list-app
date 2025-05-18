@@ -12,9 +12,11 @@ import Report from './pages/Report';
 import { theme } from './theme/theme';
 import { FireStoreError } from './types/fireStoreError';
 import { Transactions } from './types/typeTransactions';
+import { formatMonth } from './utils/formatting';
 
 function App() {
   const [transactions, setTransactions] = useState<Transactions[]>([]);
+  const [currentMonth, setCurrentMonth] = useState(new Date());
 
   // データを取得（初回レンダリング時のみ）
   useEffect(() => {
@@ -48,6 +50,11 @@ function App() {
     fetcheTransactions();
   }, [])
 
+  // 今月のデータを抽出
+  const monthlyTransactions = transactions.filter((transaction) => {
+    return transaction.date.startsWith(formatMonth(currentMonth))
+  })
+
   // FireStoreのエラーか判定する
   function isFireSoreError(error: unknown): error is FireStoreError {
     return typeof error === "object"
@@ -62,7 +69,7 @@ function App() {
         <Router>
           <Routes>
             <Route path='/' element={<AppLayout />}>
-              <Route index element={<Home />} />
+              <Route index element={<Home monthlyTransactions={monthlyTransactions} />} />
               <Route path='/report' element={<Report />} />
               <Route path='*' element={<NoMatchPath />} />
             </Route>
