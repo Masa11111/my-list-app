@@ -30,8 +30,8 @@ const SideBar: FC<SideBarProps> = (
 
   // メニュー項目
   const menuItems: menueItem[] = [
-    { text: 'Home', path: '/', icon: HomeIcon },
-    { text: 'Report', path: '/report', icon: AssessmentIcon }
+    { text: 'ホーム', path: '/', icon: HomeIcon },
+    { text: 'レポート', path: '/report', icon: AssessmentIcon }
   ]
 
   // リンクの基本CSS

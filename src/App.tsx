@@ -21,7 +21,6 @@ function App() {
   // データを取得（初回レンダリング時のみ）
   useEffect(() => {
     const fetcheTransactions = async () => {
-      console.log("fetcheTransactions start !!");
       try
       {
         const querySnapshot = await getDocs(collection(db, "transactions"));
