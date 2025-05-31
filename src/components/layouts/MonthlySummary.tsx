@@ -3,12 +3,17 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { Card, CardContent, Grid, Stack, Typography } from "@mui/material";
 import { Transactions } from '../../types/typeTransactions';
+import { convertBalanceToComma, financeCaluclations } from '../../utils/financeCalculations';
 
 interface MonthlySummaryProps {
   monthlyTransactions: Transactions[]
 }
 
 function MonthlySummary({ monthlyTransactions }: MonthlySummaryProps) {
+
+  // 当月の収支を集計・取得（カンマ編集済み）
+  const { income, expense, balance } = convertBalanceToComma(financeCaluclations(monthlyTransactions));
+
   return (
     <>
       <Grid container spacing={{ xs: 1, sm: 2, md: 3 }} mb={2}>
@@ -33,7 +38,7 @@ function MonthlySummary({ monthlyTransactions }: MonthlySummaryProps) {
                     md: '1.2rem'
                   }
                 }}
-              >¥200,000</Typography>
+              >{income}</Typography>
             </CardContent>
           </Card>
         </Grid>
@@ -57,7 +62,7 @@ function MonthlySummary({ monthlyTransactions }: MonthlySummaryProps) {
                     sm: '1rem',
                     md: '1.2rem'
                   }
-                }}>¥150,000</Typography>
+                }}>{expense}</Typography>
             </CardContent>
           </Card>
         </Grid>
@@ -81,7 +86,7 @@ function MonthlySummary({ monthlyTransactions }: MonthlySummaryProps) {
                     sm: '1rem',
                     md: '1.2rem'
                   }
-                }}>¥50,000</Typography>
+                }}>{balance}</Typography>
             </CardContent>
           </Card>
         </Grid>
